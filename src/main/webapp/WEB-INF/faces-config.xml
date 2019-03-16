@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+			  version="2.2">
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+	
+	   <component>
+        <component-type>org.primefaces.component.UltimaMenu</component-type>
+        <component-class>org.primefaces.component.menu.UltimaMenu</component-class>
+    </component>
+    
+    <render-kit>
+        <renderer>
+            <component-family>org.primefaces.component</component-family>
+            <renderer-type>org.primefaces.component.UltimaMenuRenderer</renderer-type>
+            <renderer-class>org.primefaces.component.menu.UltimaMenuRenderer</renderer-class>
+        </renderer>
+    </render-kit>
+</faces-config>

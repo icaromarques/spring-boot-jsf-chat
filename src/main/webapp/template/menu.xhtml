@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pu="http://primefaces.org/ultima">
+
+	<h:form id="menuform">
+		<div class="layout-menu #{guestPreferences.menuClass}">
+			<div class="nano">
+				<div class="nano-content menu-scroll-content">
+					<ui:fragment
+						rendered="#{guestPreferences.profileMode == 'inline' and guestPreferences.menuLayout != 'menu-layout-static menu-layout-horizontal'}">
+						<div class="profile">
+							<div class="profile-image"></div>
+							<a id="profile-options" href="#"> <span class="profile-name">
+									#{loginController.user.email}</span>
+							</a>
+						</div>
+
+
+					</ui:fragment>
+					<ui:fragment>
+
+						<div>
+							<p:dataList value="#{chatController.users}" var="user"
+								id="userlist" type="ordered" itemType="none"
+								styleClass="paginated">
+								<f:facet name="header">
+				            Usuários
+				        </f:facet>
+
+								<p:commandLink styleClass="ripplelink user-link" disabled="#{!user.online}" oncomplete="PF('pChat').show()">
+									<f:setPropertyActionListener value="#{user}" target="#{chatController.toUser}" ></f:setPropertyActionListener>
+									<i class="material-icons" style="font-size: 10px; #{user.online? 'color: green':'color: red'}">&#xe853;</i>
+									<h:outputText value="#{user.email}" style="display:inline-block" />
+								</p:commandLink>
+
+								
+
+							</p:dataList>
+							
+							<p:commandButton id="hdnBtn" actionListener="#{chatController.refreshUsers}" style="display: none;" update="menuform" />
+						</div>
+					</ui:fragment>
+				</div>
+			</div>
+		</div>
+	</h:form>
+</ui:composition>

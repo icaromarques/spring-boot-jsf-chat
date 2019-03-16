@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+    
+    <ui:param name="onLoadJS" value="connect('#{loginController.user.email}')" />
+	<ui:define name="title">Bate-papo Global</ui:define>
+	
+	<ui:define name="content">
+		<div class="container">
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<div class="card" id="chat-page">
+						<h1>Chat-geral</h1>
+						<h:form id="frmChat">
+						 <p:growl id="growl" showDetail="true" sticky="true" />  
+							<div class="row">
+								<div class="col-md-12">
+									<ul id="messageArea" class="chat-text">
+
+            						</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<h:inputTextarea value="#{chatController.message}" rows="6" id="inputMessage"
+										styleClass="chat-input" />
+								</div>
+								<div class="col-md-4"> 
+									<p:commandButton value="Enviar" id="send" update="growl,inputMessage"
+										action="#{chatController.sendMessage()}"
+										styleClass="ui-priority-primary" />
+								</div>
+							</div>
+							
+							<p:dialog widgetVar="pChat" header="Mensagem privada" modal="true" showEffect="fade" hideEffect="fade">
+									<h:panelGrid id="privateChatContainer" columns="2">
+										<p:outputLabel for="pChatInput" value="To: #{chatController.toUser.email}"></p:outputLabel>
+										
+										<h:inputTextarea id="pChatInput" value="#{chatController.privateMessage}" rows="5" cols="30" >
+										</h:inputTextarea>
+
+										<p:spacer />
+										<p:commandButton value="Enviar" actionListener="#{chatController.sendPrivate}" oncomplete="PF('pChat').hide()" />
+									</h:panelGrid>
+								</p:dialog>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			
+	</ui:define>
+
+</ui:composition>

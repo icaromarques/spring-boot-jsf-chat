@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:define name="title">Chat</ui:define>
+
+	<ui:define name="head">
+		<f:metadata>
+			<f:viewAction action="#{loginController.isLoggedInForwardHome()}" />
+		</f:metadata>
+		<script type="text/javascript">
+               //<![CDATA[
+               function skinChart() {
+                   this.cfg.shadow = false;
+                   this.cfg.title = '';
+                   this.cfg.seriesColors = ['#FFC107', '#03A9F4'];
+                   this.cfg.grid = {
+                       background: '#ffffff',
+                       borderColor: '#ffffff',
+                       gridLineColor: '#EEEEEE',
+                       shadow: false
+                   };
+                   this.cfg.axesDefaults = {
+                       rendererOptions: {
+                           textColor: '#212121'
+                       }
+                   };
+                   this.cfg.seriesDefaults = {
+                       shadow: false,
+                       lineWidth: 1,
+                       markerOptions: {
+                           shadow: false,
+                           size: 7,
+                           style: 'circle'
+                       }
+                   }
+               }
+               //]]>  
+           </script>
+		<style type="text/css">
+.main-content {
+	padding: 0;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="content">
+
+	</ui:define>
+
+</ui:composition>
